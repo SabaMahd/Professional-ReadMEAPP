@@ -2,7 +2,7 @@ const { User } = require('../models');
 
 const userController = {
     // get all users
-    getAllPizza(req, res) {
+    getAllUser(req, res) {
       User.find({})
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
