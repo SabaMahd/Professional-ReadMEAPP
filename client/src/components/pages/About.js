@@ -17,6 +17,12 @@ function About() {
                 imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus
                 in. Sed rhoncus mollis diam, sit amet facilisis lectus blandit at.
             </p>
+
+            <h1>What We Do</h1>
+            <p>
+                Insert Text here
+            </p>
+
         </div>
     );
 }
