@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
@@ -19,8 +19,23 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minlength: 5
-    }
-});
+    },
+    readMe: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Readme'
+      }
+    ] 
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true
+    },
+    id: false
+  }
+
+);
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
@@ -36,6 +51,11 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
+
+// get total count of readme documents
+userSchema.virtual('readmeCount').get(function() {
+  return this.readMe.length;
+});
 
 const User = model('User', userSchema);
 
