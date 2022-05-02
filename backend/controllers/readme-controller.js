@@ -45,7 +45,7 @@ const readmeController = {
               return res.status(404).json({ message: 'No Readme with this id!' });
             }
             return User.findOneAndUpdate(
-              { _id: params.userId },
+              {  _id: params.userId },
               { $pull: { readMe: params.readmeId } },
               { new: true }
             );
