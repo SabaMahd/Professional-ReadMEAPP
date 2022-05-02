@@ -1,21 +1,11 @@
 const router = require('express').Router();
 const {
-    getAllReadme,
-    getReadmeById,
-    createReadme,
+    addReadMe,
     removeReadme
   } = require('../../controllers/readme-controller');
 
-// Set up GET all and POST at /api/readme
-router
-  .route('/')
-  .get(getAllReadme)
-  .post(createReadme);
-
-// Set up GET oneat /api/readme/:id
-router
-  .route('/:id')
-  .get(getReadmeById)
+// /api/users/<userId>
+router.route('/:userId').post(addReadMe);
 
 
 // /api//<userid>/<readmeId>

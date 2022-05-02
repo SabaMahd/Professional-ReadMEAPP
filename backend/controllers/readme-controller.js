@@ -1,40 +1,27 @@
 const {User, Readme} = require('../models');
 
 const readmeController = {
-    // get all Readme
-    getAllReadme(req, res) {
-        Readme.find({})
-          .then(dbUserData => res.json(dbUserData))
-          .catch(err => {
-            console.log(err);
-            res.status(400).json(err);
-          });
-      },
-    
-      // get one readme by id
-      getReadmeById({ params }, res) {
-        Readme.findOne({ _id: params.id })
-          .then(dbUserData => {
-            // If no user is found, send 404
-            if (!dbUserData) {
-              res.status(404).json({ message: 'No readme found with this id!' });
-              return;
-            }
-            res.json(dbUserData);
-          })
-          .catch(err => {
-            console.log(err);
-            res.status(400).json(err);
-          });
-      },
-  
-      // create Readme
-      createReadme({ body }, res) {
-        Readme.create(body)
-          .then(dbUserData => res.json(dbUserData))
-          .catch(err => res.status(400).json(err));
-      },
-  
+        // add readme to user
+        addReadMe({ params, body }, res) {
+            console.log(body);
+            Readme.create(body)
+            .then(({ _id }) => {
+                return User.findOneAndUpdate(
+                { _id: params.userId },
+                { $push: { readMe: _id } },
+                { new: true }
+                );
+            })
+            .then(dbUserData => {
+                if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id!' });
+                return;
+                }
+                res.json(dbuserData);
+            })
+            .catch(err => res.json(err));
+        },
+        
     
   
       // delete Readme and associated Readme from user 

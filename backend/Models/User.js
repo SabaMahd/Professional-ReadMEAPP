@@ -53,7 +53,7 @@ userSchema.methods.isCorrectPassword = async function(password) {
 };
 
 // get total count of readme documents
-PizzaSchema.virtual('readmeCount').get(function() {
+userSchema.virtual('readmeCount').get(function() {
   return this.readMe.length;
 });
 
