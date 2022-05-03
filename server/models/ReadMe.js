@@ -23,7 +23,7 @@ const readmeSchema = new Schema(
       maxlength: 280,
     },
 
-    ussage: {
+    usage: {
       type: String,
       maxlength: 280,
     },
