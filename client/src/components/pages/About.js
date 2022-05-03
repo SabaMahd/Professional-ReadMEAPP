@@ -2,6 +2,7 @@
 // Will contain About component and images 
 
 import React from 'react';
+
 import '../../App.css';
 
 function AboutPage() {
@@ -22,7 +23,6 @@ function AboutPage() {
             <p>
                 Insert Text here
             </p>
-
         </div>
     );
 }
