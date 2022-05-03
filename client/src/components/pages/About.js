@@ -4,7 +4,7 @@
 import React from 'react';
 import '../../App.css';
 
-function About() {
+function AboutPage() {
 
     return (
         <div>
@@ -27,4 +27,4 @@ function About() {
     );
 }
 
-export default About;
+export default AboutPage;
