@@ -41,6 +41,6 @@ const readmeSchema = new Schema(
   }
 );
 
-const ReadMe = model('readme', readmeSchema);
+const ReadMe = model('ReadMe', readmeSchema);
 
 module.exports = ReadMe;

@@ -7,7 +7,7 @@ const resolvers = {
   Query: {
     // get all users
     users: async () => {
-      return User.find({}).select('-__v -password');
+      return User.find({}).select('-__v -password').populate('files');
     },
 
     // get all ReadMe files
@@ -45,12 +45,11 @@ const resolvers = {
     addReadMe: async (parent, { input }, context) => {
       if (context.user) {
         const readMe = await ReadMe.create({ ...input });
-        console.log(readMe._id);
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $addToSet: { files: readMe._id } },
           { new: true, runValidators: true }
-        );
+        ).populate('files');
 
         return updateUser;
       }
