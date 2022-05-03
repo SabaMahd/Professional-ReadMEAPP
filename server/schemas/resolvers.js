@@ -9,6 +9,11 @@ const resolvers = {
     users: async () => {
       return User.find({}).select('-__v -password');
     },
+
+    // get all ReadMe files
+    readmes: async () => {
+      return ReadMe.find({});
+    },
   },
 
   Mutation: {
@@ -39,9 +44,9 @@ const resolvers = {
 
     addReadMe: async (parent, { input }, context) => {
       if (context.user) {
-        console.log(input)
         const readMe = await ReadMe.create({ ...input });
-        const updateUser = await User.findOneAndUpdate(
+        console.log(readMe._id);
+        const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $addToSet: { files: readMe._id } },
           { new: true, runValidators: true }

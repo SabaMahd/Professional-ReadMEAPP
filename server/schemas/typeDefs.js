@@ -16,7 +16,7 @@ const typeDefs = gql`
     technologies: [String]
     installation: String
     Usage: String
-    createAt: String
+    createdAt: String
   }
 
   type Auth {
@@ -35,12 +35,13 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
+    readmes: [ReadMe]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addReadMe(input: ReadMeInput): User
+    addReadMe(input: ReadMeInput!): User
   }
 `;
 
