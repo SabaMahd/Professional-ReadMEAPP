@@ -10,9 +10,18 @@ const resolvers = {
       return User.find({}).select('-__v -password').populate('files');
     },
 
+    // get a user by username
+      user: async (parent, { username }) => {
+        return User.findOne({ username })
+          .select('-__v -password')
+          .populate('files');
+      },
+
     // get all ReadMe files
-    readmes: async () => {
-      return ReadMe.find({});
+    // update readmes to get readme of a particular user
+    readmes: async (parent, {username}) => {
+      const params = username ? { username } : {};
+      return ReadMe.find(params).sort({ createdAt: -1 });
     },
   },
 
