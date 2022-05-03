@@ -3,7 +3,8 @@
 // Sign-in component will be main component that shows up when user opens page
 // Sign-up component will appear if user clicks on a link that reads "Don't have an account? Create one here"
 
-// Signin page will re
+// Sign-in page will render initially based on the Navigation link
+// Sign-up page will render only based on a "Create Account" link, user cannot access sign-up page through Navigation normally 
 
 import React from "react";
 import '../../App.cs';
