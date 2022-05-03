@@ -24,6 +24,14 @@ const typeDefs = gql`
     user: User
   }
 
+  input ReadMeInput {
+    title: String
+    description: String
+    technologies: [String]
+    installation: String
+    usage: String
+  }
+
   type Query {
     me: User
     users: [User]
@@ -32,8 +40,8 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addReadMe(input: ReadMeInput): User
   }
-  
 `;
 
 module.exports = typeDefs;

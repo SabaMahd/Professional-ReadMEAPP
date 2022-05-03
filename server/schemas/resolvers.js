@@ -1,12 +1,13 @@
 const { User, ReadMe } = require('../models');
 const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express');
 
 // define resolvers
 const resolvers = {
   Query: {
     // get all users
     users: async () => {
-      return User.find({});
+      return User.find({}).select('-__v -password');
     },
   },
 
@@ -34,6 +35,22 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+    addReadMe: async (parent, { input }, context) => {
+      if (context.user) {
+        console.log(input)
+        const readMe = await ReadMe.create({ ...input });
+        const updateUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { files: readMe._id } },
+          { new: true, runValidators: true }
+        );
+
+        return updateUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };
