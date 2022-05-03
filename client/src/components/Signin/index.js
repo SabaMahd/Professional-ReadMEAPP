@@ -19,6 +19,7 @@ function SigninForm() {
         }
     };
 
+    // Validates email address
     const handleChange = (e) => {
         if (e.target.name === 'email') {
             const isValid = validateEmail(e.target.value);
