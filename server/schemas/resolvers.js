@@ -37,7 +37,7 @@ const resolvers = {
     },
 
     // update readmes to get readme of a particular user
-    readmes: async (parent, {username}) => {
+    userReadmes: async (parent, {username}) => {
       const params = username ? { username } : {};
       return ReadMe.find(params).sort({ createdAt: -1 });
     },
@@ -71,7 +71,7 @@ const resolvers = {
 
     addReadMe: async (parent, { input }, context) => {
       if (context.user) {
-        const readMe = await ReadMe.create({ ...input });
+        const readMe = await ReadMe.create({ ...input, username: context.user.username });
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $addToSet: { files: readMe._id } },
