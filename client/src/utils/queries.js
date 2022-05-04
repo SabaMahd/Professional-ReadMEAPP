@@ -1,20 +1,17 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_USERS = gql`
-  query users($username: String) {
-    users(username: $username) {
+export const QUERY_READMES = gql`
+  query readmes($username: String) {
+    readmes(username: $username) {
       _id
       username
-      email
-      files {
-        _id
-        title
-        description
-        technologies
-        installation
-        Usage
-        createdAt
-      }
+      title
+      description
+      technologies
+      installation
+      Usage
+      createdAt
+      
     }
   }
 `;

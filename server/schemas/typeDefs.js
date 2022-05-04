@@ -11,6 +11,7 @@ const typeDefs = gql`
 
   type ReadMe {
     _id: ID
+    username: String
     title: String
     description: String
     technologies: [String]

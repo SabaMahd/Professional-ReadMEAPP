@@ -1,0 +1,26 @@
+{
+  "name": "professional-readmeapp",
+  "version": "1.0.0",
+  "description": "This is an app that allows developers to skip the hassle and extensive time manually creating a README profile. This App will provide an easy way for the user to create a Github ReadMe File within minutes with all the cool features and add-ons. Users will also be able to house all their ReadMe files created for their projects in one place in case they need to revisit them.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SabaMahd/Professional-ReadMEAPP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SabaMahd/Professional-ReadMEAPP/issues"
+  },
+  "homepage": "https://github.com/SabaMahd/Professional-ReadMEAPP#readme",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
