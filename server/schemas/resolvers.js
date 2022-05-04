@@ -49,7 +49,9 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { files: readMe._id } },
           { new: true, runValidators: true }
-        ).populate('files');
+        )
+          .populate('files')
+          .select('-__v -password');
 
         return updateUser;
       }
