@@ -55,6 +55,18 @@ function SigninForm() {
                 )}
                 <button type="submit">Sign-in</button>
             </form>
+
+            <nav>
+            
+            <span>
+                Don't have an account yet?  
+            </span>
+            
+            <a href="#signup">
+                 Create one here
+            </a> 
+            
+            </nav>
         </section>
     );
 }
