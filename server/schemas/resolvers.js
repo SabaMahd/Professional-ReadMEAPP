@@ -5,6 +5,21 @@ const { AuthenticationError } = require('apollo-server-express');
 // define resolvers
 const resolvers = {
   Query: {
+
+    // me query
+      me: async (parent, args, context) => {
+        if (context.user) {
+          const userData = await User.findOne({ _id: context.user._id })
+            .select('-__v -password')
+            .populate('files');
+      
+          return userData;
+        }
+      
+        throw new AuthenticationError('Not logged in');
+      },
+
+    // other queries remain the same
     // get all users
     users: async () => {
       return User.find({}).select('-__v -password').populate('files');
