@@ -10,6 +10,7 @@ const typeDefs = gql`
   }
 
   type ReadMe {
+    username: String
     _id: ID
     title: String
     description: String
@@ -36,7 +37,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    readmes(username: String): [ReadMe]
+    allReadmes: [ReadMe]
+    readmes(username: String!): [ReadMe]
   }
 
   type Mutation {

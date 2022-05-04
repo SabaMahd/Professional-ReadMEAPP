@@ -31,8 +31,11 @@ const resolvers = {
           .select('-__v -password')
           .populate('files');
       },
+    
+    allReadmes: async () => {
+      return ReadMe.find({})
+    },
 
-    // get all ReadMe files
     // update readmes to get readme of a particular user
     readmes: async (parent, {username}) => {
       const params = username ? { username } : {};
