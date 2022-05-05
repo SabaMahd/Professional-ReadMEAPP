@@ -5,19 +5,18 @@ const { AuthenticationError } = require('apollo-server-express');
 // define resolvers
 const resolvers = {
   Query: {
-
     // me query
-      me: async (parent, args, context) => {
-        if (context.user) {
-          const userData = await User.findOne({ _id: context.user._id })
-            .select('-__v -password')
-            .populate('files');
-      
-          return userData;
-        }
-      
-        throw new AuthenticationError('Not logged in');
-      },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('files');
+
+        return userData;
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
 
     // other queries remain the same
     // get all users
@@ -26,18 +25,18 @@ const resolvers = {
     },
 
     // get a user by username
-      user: async (parent, { username }) => {
-        return User.findOne({ username })
-          .select('-__v -password')
-          .populate('files');
-      },
-    
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('files');
+    },
+
     allReadmes: async () => {
-      return ReadMe.find({})
+      return ReadMe.find({});
     },
 
     // update readmes to get readme of a particular user
-    userReadmes: async (parent, {username}) => {
+    userReadmes: async (parent, { username }) => {
       const params = username ? { username } : {};
       return ReadMe.find(params).sort({ createdAt: -1 });
     },
@@ -71,7 +70,10 @@ const resolvers = {
 
     addReadMe: async (parent, { input }, context) => {
       if (context.user) {
-        const readMe = await ReadMe.create({ ...input, username: context.user.username });
+        const readMe = await ReadMe.create({
+          ...input,
+          username: context.user.username,
+        });
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $addToSet: { files: readMe._id } },
@@ -79,6 +81,24 @@ const resolvers = {
         )
           .populate('files')
           .select('-__v -password');
+
+        return updateUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    deleteReadMe: async (parent, { readMeId }, context) => {
+      if (context.user) {
+        const updateUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { files: readMeId } },
+          { new: true, runValidators: true }
+        )
+          .populate('files')
+          .select('-__v -password');
+
+        const deleteReadMe = await ReadMe.findOneAndDelete({ _id: readMeId });
 
         return updateUser;
       }
