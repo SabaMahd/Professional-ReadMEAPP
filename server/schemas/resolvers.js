@@ -2,6 +2,7 @@ const { User, ReadMe } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const fs = require('fs');
+const {technologies, installation, usage} = require('../utils/helpers')
 
 // define resolvers
 const resolvers = {
@@ -14,19 +15,13 @@ const resolvers = {
           .populate('files');
 
         userData.files.map((element) => {
-          let content = `
-#${element.title}
-          
-##Description
-${element.description}
-          
-##Technologies
-${element.technologies}
-`;
-
+          let content =`# ${element.title} \n\n## Description \n${element.description}${technologies(element)}${installation(element)}${usage(element)}`;
           fs.appendFile(`dist/${element.title}.md`, content, (err) => {
-            if (err) throw err;
-            console.log('The "data to append" was appended to file!');
+            if (err) {
+              throw err
+            } else {
+              console.log('The "data to append" was appended to file!');
+            }
           });
         });
 
