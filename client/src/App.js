@@ -21,6 +21,7 @@ function App() {
     <div>
       <About />
       <SigninForm />
+      <Footer />
     </div>
 
   //   <ApolloProvider client={client}>
