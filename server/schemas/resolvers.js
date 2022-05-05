@@ -1,6 +1,7 @@
 const { User, ReadMe } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+const fs = require('fs');
 
 // define resolvers
 const resolvers = {
@@ -11,6 +12,14 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
           .populate('files');
+
+        const content = "hello world"
+        userData.files.map((element) => {
+          fs.appendFile(`dist/${element.title}.md`, content, (err) => {
+            if (err) throw err;
+            console.log('The "data to append" was appended to file!');
+          });
+        });
 
         return userData;
       }
