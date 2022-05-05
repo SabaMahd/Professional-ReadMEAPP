@@ -16,7 +16,7 @@ const resolvers = {
 
         userData.files.map((element) => {
           let content =`# ${element.title} \n\n## Description \n${element.description}${technologies(element)}${installation(element)}${usage(element)}`;
-          fs.appendFile(`dist/${element.title}.md`, content, (err) => {
+          fs.writeFile(`dist/${element.title}.md`, content, (err) => {
             if (err) {
               throw err
             } else {
