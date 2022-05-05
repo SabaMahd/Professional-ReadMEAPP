@@ -13,8 +13,17 @@ const resolvers = {
           .select('-__v -password')
           .populate('files');
 
-        const content = "hello world"
         userData.files.map((element) => {
+          let content = `
+#${element.title}
+          
+##Description
+${element.description}
+          
+##Technologies
+${element.technologies}
+`;
+
           fs.appendFile(`dist/${element.title}.md`, content, (err) => {
             if (err) throw err;
             console.log('The "data to append" was appended to file!');
