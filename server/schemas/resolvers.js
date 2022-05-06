@@ -14,16 +14,19 @@ const resolvers = {
           .select('-__v -password')
           .populate('files');
 
-        userData.files.map((element) => {
-          let content =`# ${element.title} \n\n## Description \n${element.description}${technologies(element)}${installation(element)}${usage(element)}`;
-          fs.writeFile(`dist/${element.title}.md`, content, (err) => {
-            if (err) {
-              throw err
-            } else {
-              console.log('The "data to append" was appended to file!');
-            }
+         if (userData.files.length >= 1) {
+          userData.files.map((element) => {
+            let content =`# ${element.title} \n\n## Description \n${element.description}${technologies(element)}${installation(element)}${usage(element)}`;
+            fs.writeFile(`dist/${element.title}.md`, content, (err) => {
+              if (err) {
+                throw err
+              } else {
+                console.log('The "data to append" was appended to file!');
+              }
+            });
           });
-        });
+         }
+       
 
         return userData;
       }
