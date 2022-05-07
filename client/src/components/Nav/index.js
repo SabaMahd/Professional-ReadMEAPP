@@ -1,4 +1,8 @@
 import React from 'react';
+//import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
+//import SigninForm from '../src/components/Signup';
+//import SigninForm from '../src/components/Signin';
 
 const Header = () => {
   return (
