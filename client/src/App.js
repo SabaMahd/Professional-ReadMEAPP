@@ -19,21 +19,22 @@ const client = new ApolloClient({
 function App() {
   return (
     <div>
+      <Nav />
       <About />
       <SigninForm />
     </div>
 
-  //   <ApolloProvider client={client}>
+    //   <ApolloProvider client={client}>
 
-  //       <div className='flex-column justify-flex-start min-100-vh'>
-  //           <Nav />
-  //           <div className='container'>
-  //               <About />
-  //           </div>
-  //               <Footer />
-  //       </div>
+    //       <div className='flex-column justify-flex-start min-100-vh'>
+    //           <Nav />
+    //           <div className='container'>
+    //               <About />
+    //           </div>
+    //               <Footer />
+    //       </div>
 
-  // </ApolloProvider>
+    // </ApolloProvider>
 
   );
 }
