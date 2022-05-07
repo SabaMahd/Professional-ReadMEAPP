@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import About from '../src/components/About';
+import SigninForm from '../src/components/Signin';
 import Nav from './components/Nav';
 import Footer from './components/Footer'
 import './App.css';
@@ -17,17 +18,23 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <div>
+      <Nav />
+      <About />
+      <SigninForm />
+    </div>
 
-        <div className='flex-column justify-flex-start min-100-vh'>
-            <Nav />
-            <div className='container'>
-                <About />
-            </div>
-                <Footer />
-        </div>
+    //   <ApolloProvider client={client}>
 
-  </ApolloProvider>
+    //       <div className='flex-column justify-flex-start min-100-vh'>
+    //           <Nav />
+    //           <div className='container'>
+    //               <About />
+    //           </div>
+    //               <Footer />
+    //       </div>
+
+    // </ApolloProvider>
 
   );
 }
