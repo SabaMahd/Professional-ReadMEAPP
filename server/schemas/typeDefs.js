@@ -40,6 +40,7 @@ const typeDefs = gql`
     user(username: String!): User
     allReadmes: [ReadMe]
     userReadmes(username: String!): [ReadMe]
+    composeReadMe(readMeId: ID!): ReadMe
   }
 
   type Mutation {

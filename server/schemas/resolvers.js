@@ -2,7 +2,7 @@ const { User, ReadMe } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const fs = require('fs');
-const {technologies, installation, usage} = require('../utils/helpers')
+const { technologies, installation, usage } = require('../utils/helpers');
 
 // define resolvers
 const resolvers = {
@@ -13,20 +13,6 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
           .populate('files');
-
-         if (userData.files.length >= 1) {
-          userData.files.map((element) => {
-            let content =`# ${element.title} \n\n## Description \n${element.description}${technologies(element)}${installation(element)}${usage(element)}`;
-            fs.writeFile(`dist/${element.title}.md`, content, (err) => {
-              if (err) {
-                throw err
-              } else {
-                console.log('The "data to append" was appended to file!');
-              }
-            });
-          });
-         }
-       
 
         return userData;
       }
@@ -55,6 +41,26 @@ const resolvers = {
     userReadmes: async (parent, { username }) => {
       const params = username ? { username } : {};
       return ReadMe.find(params).sort({ createdAt: -1 });
+    },
+
+    composeReadMe: async (parent, { readMeId }, context) => {
+      if (context.user) {
+        const readMeData = await ReadMe.findById({ _id: readMeId });
+
+        if (readMeData) {
+          let content = `# ${readMeData.title} \n\n## Description \n${readMeData.description}${technologies(readMeData)}${installation(readMeData)}${usage(readMeData)}`;
+          fs.writeFile(`dist/README.md`, content, (err) => {
+            if (err) {
+              throw err;
+            } else {
+              console.log('The "data to append" was appended to file!');
+            }
+          })
+          return readMeData
+        } else {
+          console.log("No ReadMe found!")
+        }
+      }
     },
   },
 
