@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from '../src/components/About';
 import Nav from './components/Nav';
 import Footer from './components/Footer'
+import SigninForm from './components/Signin';
+import SignupForm from './components/Signup';
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -23,6 +25,10 @@ function App() {
             <Nav />
             <div className='container'>
                 <About />
+            </div>
+            <div className='container'>
+                <SigninForm />
+                <SignupForm></SignupForm>
             </div>
                 <Footer />
         </div>
