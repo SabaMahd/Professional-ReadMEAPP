@@ -3,7 +3,8 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import About from '../src/components/About';
 import SigninForm from '../src/components/Signin';
 import Nav from './components/Nav';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+
 import './App.css';
 
 
@@ -21,7 +22,6 @@ function App() {
     <div>
       <Nav />
       <About />
-      <SigninForm />
       <Footer />
     </div>
 
