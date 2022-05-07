@@ -5,6 +5,7 @@ import SigninForm from '../src/components/Signin';
 import Nav from './components/Nav';
 import Footer from './components/Footer'
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 const httpLink = createHttpLink({
@@ -18,23 +19,28 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <About />
-      <SigninForm />
-    </div>
+    // <div>
+    //   <Nav />
+    //   <About />
+    //   <SigninForm />
+    //   <Footer />
+    // </div>
 
-    //   <ApolloProvider client={client}>
 
-    //       <div className='flex-column justify-flex-start min-100-vh'>
-    //           <Nav />
-    //           <div className='container'>
-    //               <About />
-    //           </div>
-    //               <Footer />
-    //       </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className='flex-column justify-flex-start min-100-vh'>
+          <Nav />
+          <div className='container'>
+            <Switch>
+              <Route exact path='/' component={About} />
+            </Switch>
+          </div>
 
-    // </ApolloProvider>
+        </div>
+        <Footer />
+      </Router>
+    </ApolloProvider>
 
   );
 }
