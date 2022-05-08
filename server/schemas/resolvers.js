@@ -105,7 +105,7 @@ const resolvers = {
           { $addToSet: { files: readMe._id } },
           { new: true, runValidators: true }
         )
-          .populate('files')
+          .populate({ path: 'files', options: { sort: { createdAt: -1 } } })
           .select('-__v -password');
 
         return updateUser;
