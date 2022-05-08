@@ -16,7 +16,7 @@ const Header = () => {
       <nav>
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to='/generateReadMe'>
+            <Link to='/home'>
               README Generator
             </Link>
             {/* <a href="client\src\components\GenerateReadmeForm">

@@ -10,9 +10,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import About from '../src/components/About';
 import SigninForm from '../src/components/Signin';
+import ReadmeGenerator from './components/pages/ReadmeGenerator';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import GenerateReadmeForm from './components/GenerateReadmeForm'
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -46,8 +46,8 @@ function App() {
           <Nav />
           <div className="container">
             <Routes>
-              <Route exact path="/" element={<About />} />
-              <Route path='/generateReadMe' element={<GenerateReadmeForm/>} />
+              <Route path="/" element={<About />} />
+              <Route path='/home' element={<ReadmeGenerator/>} />
             </Routes>
           </div>
         </div>

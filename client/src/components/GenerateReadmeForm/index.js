@@ -1,9 +1,10 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function ReadMeForm() {
   const technologies = [
-    'JavaScrip',
+    'JavaScript',
     'NodeJS',
     'ReactJS',
     'MongoDB',
@@ -42,6 +43,7 @@ function ReadMeForm() {
         <Form.Label>Usage</Form.Label>
         <Form.Control as="textarea" rows={3} />
       </Form.Group>
+      <Button variant="outline-warning">Submit</Button>{' '}
     </Form>
   );
 }
