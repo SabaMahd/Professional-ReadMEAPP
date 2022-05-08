@@ -1,19 +1,32 @@
 import React from 'react';
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import About from '../src/components/About';
 import SigninForm from '../src/components/Signin';
 import Nav from './components/Nav';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: { ...headers, authorization: token ? `Bearer ${token}` : '' },
+  };
 });
 
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
@@ -26,22 +39,19 @@ function App() {
     //   <Footer />
     // </div>
 
-
     <ApolloProvider client={client}>
       <Router>
-        <div className='flex-column justify-flex-start min-100-vh'>
+        <div className="flex-column justify-flex-start min-100-vh">
           <Nav />
-          <div className='container'>
-            <Switch>
-              <Route exact path='/' component={About} />
-            </Switch>
+          <div className="container">
+            <Routes>
+              <Route exact path="/" element={<About/>} />
+            </Routes>
           </div>
-
         </div>
         <Footer />
       </Router>
     </ApolloProvider>
-
   );
 }
 

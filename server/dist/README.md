@@ -1,13 +1,10 @@
-# Build A README 
+# README Project V5 
 
 ## Description 
 This is a test readme file for our app
 
 ## Built With 
-* node,js,
-* express.js,
-* react,
-* mongodb
+* node
 
 ## Installation 
 to use this application simple clone the repo to your system
