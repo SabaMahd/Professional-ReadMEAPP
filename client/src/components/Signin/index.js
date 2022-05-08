@@ -57,15 +57,15 @@ function SigninForm() {
             </form>
 
             <nav>
-            
-            <span>
-                Don't have an account yet?  
-            </span>
-            
-            <a href="#signup">
-                 Create one here
-            </a> 
-            
+
+                <span>
+                    Don't have an account yet?
+                </span>
+
+                <a href="#signup">
+                    Create one here
+                </a>
+
             </nav>
         </section>
     );

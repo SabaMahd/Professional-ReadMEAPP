@@ -32,23 +32,26 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <About />
-      <SigninForm />
-    </div>
+    // <div>
+    //   <Nav />
+    //   <About />
+    //   <SigninForm />
+    //   <Footer />
+    // </div>
 
-    //   <ApolloProvider client={client}>
-
-    //       <div className='flex-column justify-flex-start min-100-vh'>
-    //           <Nav />
-    //           <div className='container'>
-    //               <About />
-    //           </div>
-    //               <Footer />
-    //       </div>
-
-    // </ApolloProvider>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Nav />
+          <div className="container">
+            <Routes>
+              <Route exact path="/" component={About} />
+            </Routes>
+          </div>
+        </div>
+        <Footer />
+      </Router>
+    </ApolloProvider>
   );
 }
 
