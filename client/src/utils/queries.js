@@ -1,17 +1,35 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_READMES = gql`
-  query readmes($username: String) {
-    readmes(username: $username) {
+export const GET_ME = gql`
+  {
+    me {
       _id
+      email
       username
-      title
-      description
-      technologies
-      installation
-      Usage
-      createdAt
-      
+      fileCount
+      files {
+        _id
+        title
+        description
+        technologies
+        installation
+        usage
+        createdAt
+      }
     }
   }
+`;
+
+export const COMPOSE_README = gql`
+query composeReadMe($readMeId: ID!) {
+  composeReadMe(readMeId: $readMeId) {
+    _id
+    title
+    description
+    technologies
+    installation
+    usage
+    createAt
+  }
+}
 `;
