@@ -12,6 +12,7 @@ import About from '../src/components/About';
 import SigninForm from '../src/components/Signin';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import GenerateReadmeForm from './components/GenerateReadmeForm'
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -45,7 +46,8 @@ function App() {
           <Nav />
           <div className="container">
             <Routes>
-              <Route exact path="/" element={<About/>} />
+              <Route exact path="/" element={<About />} />
+              <Route path='/generateReadMe' element={<GenerateReadmeForm/>} />
             </Routes>
           </div>
         </div>
