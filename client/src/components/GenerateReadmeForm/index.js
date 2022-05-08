@@ -27,6 +27,7 @@ function ReadMeForm() {
       <div key="inline-checkbox" className="mb-3">
         {technologies.map((technology) => (
           <Form.Check
+            key={technology}
             inline
             label={technology}
             name={technology}

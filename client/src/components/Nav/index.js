@@ -24,7 +24,13 @@ const Header = () => {
             </a> */}
           </li>
           <li className="mx-1">
-            <Link to='/login'>Login/Sign-Up</Link>
+            <Link to='/login'>Login</Link>
+            {/* <a href="#signin">
+              Login/Sign Up
+            </a> */}
+          </li>
+          <li className="mx-1">
+            <Link to='/signup'>Sign-Up</Link>
             {/* <a href="#signin">
               Login/Sign Up
             </a> */}
