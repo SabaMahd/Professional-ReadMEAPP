@@ -45,7 +45,7 @@ function App() {
           <Nav />
           <div className="container">
             <Routes>
-              <Route exact path="/" component={About} />
+              <Route exact path="/" element={<About/>} />
             </Routes>
           </div>
         </div>
