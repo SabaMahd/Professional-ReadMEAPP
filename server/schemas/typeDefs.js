@@ -17,7 +17,7 @@ const typeDefs = gql`
     description: String
     technologies: [String]
     installation: String
-    Usage: String
+    usage: String
     createdAt: String
   }
 

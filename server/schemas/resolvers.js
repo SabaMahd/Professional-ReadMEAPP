@@ -12,7 +12,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('files');
+          .populate({ path: 'files', options: { sort: { createdAt: -1 } } });
 
         return userData;
       }
@@ -48,17 +48,21 @@ const resolvers = {
         const readMeData = await ReadMe.findById({ _id: readMeId });
 
         if (readMeData) {
-          let content = `# ${readMeData.title} \n\n## Description \n${readMeData.description}${technologies(readMeData)}${installation(readMeData)}${usage(readMeData)}`;
+          let content = `# ${readMeData.title} \n\n## Description \n${
+            readMeData.description
+          }${technologies(readMeData)}${installation(readMeData)}${usage(
+            readMeData
+          )}`;
           fs.writeFile(`dist/README.md`, content, (err) => {
             if (err) {
               throw err;
             } else {
               console.log('The "data to append" was appended to file!');
             }
-          })
-          return readMeData
+          });
+          return readMeData;
         } else {
-          console.log("No ReadMe found!")
+          console.log('No ReadMe found!');
         }
       }
     },
