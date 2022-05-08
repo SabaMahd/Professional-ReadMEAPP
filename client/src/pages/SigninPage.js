@@ -11,9 +11,9 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const Login = (props) => {
+const Signin = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [Signin, { error }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -30,11 +30,11 @@ const Login = (props) => {
     event.preventDefault();
   
     try {
-      const { data } = await login({
+      const { data } = await Signin({
         variables: { ...formState }
       });
     
-      Auth.login(data.login.token);
+      Auth.Signin(data.login.token);
     } catch (e) {
       console.error(e);
     }
@@ -68,7 +68,7 @@ const Login = (props) => {
               <button className='btn d-block w-100' type='submit'>
                 Submit
               </button>
-              {error && <div>Login failed</div>}
+              {error && <div>Signin failed</div>}
             </form>
           </div>
         </div>
@@ -77,4 +77,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Signin;

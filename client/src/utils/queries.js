@@ -1,5 +1,25 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      fileCount
+      files {
+        _id
+        title
+        description
+        technologies
+        installation
+        usage
+        createdAt
+      }
+    }
+  }
+`;
+
 export const GET_ME = gql`
   {
     me {
@@ -33,3 +53,4 @@ query composeReadMe($readMeId: ID!) {
   }
 }
 `;
+
