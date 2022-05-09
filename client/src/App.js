@@ -18,6 +18,7 @@ import Signup from './pages/Signup';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import GenerateReadMeForm from './components/GenerateReadmeForm';
 
 import Home from './pages/Home';
 
@@ -54,27 +55,31 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-            <Route
-      path="/"
-      element={<Home />}
-    />
-    <Route
-      path="/signin"
-      element={<Signin />}
-    />
-    <Route
-      path="/signup"
-      element={<Signup />}
-    />
-    <Route
-      path="/profile/:username?"
-      element={<Profile />}
-    />
-      </Routes>
-      </div>
-      <Footer />
-    </div>
-    </Router>
+                <Route
+               path="/"
+                  element={<Home />}
+                />
+              <Route
+                path="/signin"
+                element={<Signin />}
+              />
+              <Route
+                path="/signup"
+                element={<Signup />}
+              />
+              <Route
+                path="/profile/:username?"
+                element={<Profile />}
+              />
+              <Route
+                path="/readme"
+                element={<GenerateReadMeForm />}
+              />
+           </Routes>
+        </div>
+           <Footer />
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }
