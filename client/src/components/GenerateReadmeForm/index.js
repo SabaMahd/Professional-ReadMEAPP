@@ -1,67 +1,53 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_README } from '../../utils/mutations';
-import { COMPOSE_README, GET_ME } from '../../utils/queries';
+import React from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-const GenerateReadMeForm = () => {
 
-  const handleFormSubmit = async event => {
-    event.preventDefault();
+function ReadMeForm() {
+  const technologies = [
+    'JavaScript',
+    'NodeJS',
+    'ReactJS',
+    'MongoDB',
+    'GraphQL',
+    'Bootstrap',
+    'CSS',
+    'HTML',
+  ];
 
-  };
-    return (
-      <div>
-        <h2>Create your README</h2>
-        <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
-        onSubmit={handleFormSubmit}>
-          <label>User Name:</label>
-          <input
-          type= 'string'
-          className="form-input col-12 col-md-9"
-          required
+  return (
+    <Form>
+      <Form.Group className="mb-3" controlId="readMeForm.ControlInput1">
+        <Form.Label>Title</Form.Label>
+        <Form.Control type="text" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea1">
+        <Form.Label>Decsciption</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
+      <div key="inline-checkbox" className="mb-3">
+        {technologies.map((technology) => (
+          <Form.Check
+            key={technology}
+            inline
+            label={technology}
+            name={technology}
+            type="checkbox"
+            id={`inline-checkbox-${technology}`}
           />
-          <label>Give a title to your README:</label>
-          <input
-          type= 'string'
-          className="form-input col-12 col-md-9"
-          required
-          />
-          <textarea
-            placeholder="Here's a description..."
-            required
-            className="form-input col-12 col-md-9"
-            onChange={handleChange}>
-        </textarea>
-        
-          <label>Technologies used:</label>
-          <select className="form-input col-12 col-md-9">
-            <option value="React">React</option>
-            <option value="Node js">Node</option>
-            <option value="MongoDB">MongoDB</option>
-            <option value="Express">Express</option>
-            <option value="SQL">SQL</option>
-          </select>
-          <label>Installation:</label>
-          <input
-          type= 'string'
-          className="form-input col-12 col-md-9"
-          />
-          <label>Usage:</label>
-          <input
-          type= 'string'
-          className="form-input col-12 col-md-9"
-          />
-
-      
-        <button className="btn col-12 col-md-3" type="submit">
-          Submit
-        </button>
-      </form>
-
+        ))}
       </div>
-    )
-};
+      <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea2">
+        <Form.Label>Installation</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea3">
+        <Form.Label>Usage</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
+      <Button variant="outline-warning">Submit</Button>{' '}
+    </Form>
+  );
+}
 
-
-export default GenerateReadMeForm;
+export default ReadMeForm;
