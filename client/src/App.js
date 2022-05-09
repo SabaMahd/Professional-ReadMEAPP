@@ -13,7 +13,6 @@ import SignInPage from './components/pages/SigninPage';
 import SignUpPage from './components/pages/Signup';
 import ReadmeGenerator from './components/pages/ReadmeGenerator';
 import Nav from './components/Nav';
-import ReadmeGenerator from '../src/components/GenerateReadmeForm'
 import Footer from './components/Footer';
 // import './App.css';
 
@@ -52,12 +51,12 @@ function App() {
               <Route path="/home" element={<ReadmeGenerator />} />
               <Route path="/login" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
-            </Routes >
-          </div >
-        </div >
+            </Routes>
+          </div>
+        </div>
         <Footer />
-      </Router >
-    </ApolloProvider >
+      </Router>
+    </ApolloProvider>
   );
 }
 

@@ -11,7 +11,7 @@ import SignInPage from './SigninPage';
 
 function ReadmeGenerator() {
   const loggedIn = Auth.loggedIn();
-  return loggedIn ? <ReadMeForm /> : <SignInPage/> 
+  return loggedIn ? <ReadMeForm /> : <SignInPage />
 }
 
 export default ReadmeGenerator;
