@@ -1546,3 +1546,8 @@ a {
 .navActive {
   color: var(--secondary);
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+}

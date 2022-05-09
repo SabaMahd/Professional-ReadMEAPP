@@ -1,0 +1,17 @@
+{
+  "main": "server/server.js",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.2"
+  }
+}

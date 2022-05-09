@@ -3,6 +3,11 @@ const formatDate = require('../utils/formatDate');
 
 const readmeSchema = new Schema(
   {
+    username: {
+      type: String,
+      required: true
+    },
+    
     title: {
       type: String,
       required: true,
