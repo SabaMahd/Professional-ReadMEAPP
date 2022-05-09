@@ -23,7 +23,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/Signinin">Login</Link>
+              <Link to="/Signin">Login</Link>
               <Link to="/signup">Signup</Link>
             </>
           )}

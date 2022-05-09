@@ -8,10 +8,19 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import About from '../src/components/About';
-import SigninForm from '../src/components/Signin';
-import Nav from './components/Nav';
+import Signin from './pages/SigninPage';
+
+//import NoMatch from './pages/NoMatch';
+
+import Profile from './pages/Profile';
+
+import Signup from './pages/Signup';
+
+import Header from './components/Header';
 import Footer from './components/Footer';
+
+import Home from './pages/Home';
+
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -42,15 +51,30 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Nav />
+          <Header />
           <div className="container">
             <Routes>
-              <Route exact path="/" element={<About/>} />
-            </Routes>
-          </div>
-        </div>
-        <Footer />
-      </Router>
+            <Route
+      path="/"
+      element={<Home />}
+    />
+    <Route
+      path="/signin"
+      element={<Signin />}
+    />
+    <Route
+      path="/signup"
+      element={<Signup />}
+    />
+    <Route
+      path="/profile/:username?"
+      element={<Profile />}
+    />
+      </Routes>
+      </div>
+      <Footer />
+    </div>
+    </Router>
     </ApolloProvider>
   );
 }

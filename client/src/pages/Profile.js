@@ -4,7 +4,7 @@ import Auth from '../utils/auth';
 
 import { Navigate, useParams } from 'react-router-dom';
 
-import ReadMeList from '../components/ThoughtList';
+import ReadMeList from '../components/ReadMeList';
 import { GET_ME, QUERY_USER } from '../utils/queries';
 import { ADD_USER } from '../utils/mutations';
 
@@ -14,7 +14,7 @@ import GenerateReadmeForm from '../components/GenerateReadmeForm';
 const Profile = () => {
   const { username: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  const { loading, data } = useQuery(userParam ? QUERY_USER : GET_ME, {
     variables: { username: userParam }
   });
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_READMES } from '../utils/queries';
+import { COMPOSE_README } from '../utils/queries';
 import ReadMeList from '../components/ReadMeList';
 
 const Home = () => {
     // use useQuery hook to make query request
-  const { loading, data } = useQuery(QUERY_READMES);
+  const { loading, data } = useQuery(COMPOSE_README);
   const readmes = data?.readmes || [];
             console.log(readmes);
 
