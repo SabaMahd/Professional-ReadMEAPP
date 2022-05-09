@@ -1,10 +1,13 @@
 import React from 'react';
 //import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
+import NavTabs from '../NavTabs';
 //import SigninForm from '../src/components/Signup';
 //import SigninForm from '../src/components/Signin';
 
-const Header = () => {
+function Header({ 
+  currentPage, handlePageChange
+}) {
   return (
     <header className="bg-secondary mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
@@ -34,6 +37,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
     </header>
   );
 };
