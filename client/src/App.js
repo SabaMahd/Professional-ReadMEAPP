@@ -9,11 +9,13 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import About from '../src/components/About';
-import SigninForm from './components/Signin';
+import SignInPage from './components/pages/SigninPage';
+import SignUpPage from './components/pages/Signup';
+import ReadmeGenerator from './components/pages/ReadmeGenerator';
 import Nav from './components/Nav';
 import ReadmeGenerator from '../src/components/GenerateReadmeForm'
 import Footer from './components/Footer';
-import './App.css';
+// import './App.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,14 +48,16 @@ function App() {
           <Nav />
           <div className="container">
             <Routes>
-              <Route exact path="/" element={<About />} />
-              <Route exact path="/ReadmeGenerator" element={<ReadmeGenerator />} />
-            </Routes>
-          </div>
-        </div>
+              <Route path="/" element={<About />} />
+              <Route path="/home" element={<ReadmeGenerator />} />
+              <Route path="/login" element={<SignInPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
+            </Routes >
+          </div >
+        </div >
         <Footer />
-      </Router>
-    </ApolloProvider>
+      </Router >
+    </ApolloProvider >
   );
 }
 

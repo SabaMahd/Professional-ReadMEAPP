@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/client';
+// Sign-up form component
+import React from "react";
+// Checks to make sure user's email address and password are both unique
+// Validate email address using the RegEx in the helpers.js file in the utils folder
+import { validateEmail } from "../../utils/helpers";
+import { useState } from 'react'
 
-import { ADD_USER } from '/Users/oharr/OneDrive/Desktop/projects2/Professional-ReadMEAPP/client/src/utils/mutations';
-import Auth from '/Users/oharr/OneDrive/Desktop/projects2/Professional-ReadMEAPP/client/src/utils/auth';
+function SignupForm() {
 
-const SignupForm = () => {
-    const [addUser, { error }] = useMutation(ADD_USER);
-    // set initial form state
-    const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
-    // set state for form validation
-    const [validated] = useState(false);
-    // set state for alert
-    const [showAlert, setShowAlert] = useState(false);
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [errorMessage, setErrorMessage] = useState('');
+    const { email, password } = formState;
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setUserFormData({ ...userFormData, [name]: value });
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!errorMessage) {
+            setFormState({ [e.target.name]: e.target.value });
+            console.log('Form', formState);
+        }
     };
 
     const handleFormSubmit = async event => {
