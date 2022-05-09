@@ -102,7 +102,7 @@ function SignupForm() {
         </div>
       )}
       <Button variant="primary" type="submit">
-        Submit
+        Sign Up
       </Button>
     </Form>
     // <section>

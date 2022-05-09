@@ -87,8 +87,12 @@ function SigninForm() {
         </div>
       )}
       <Button variant="primary" type="submit">
-        Sign-In
+        Login
       </Button>
+      <div>
+        <span>Don't have an account yet?</span>
+        <a href="/signup"> Create one here!</a>
+      </div>
     </Form>
     // <section>
     //   <form id="signin-form" onSubmit={handleSubmit}>
