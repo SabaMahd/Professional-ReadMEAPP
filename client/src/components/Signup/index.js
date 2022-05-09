@@ -17,7 +17,7 @@ function SignupForm() {
   });
   const [errorMessage, setErrorMessage] = useState('');
   const { username, email, password } = formState;
-  const [signup, { error }] = useMutation(ADD_USER);
+  const [signup] = useMutation(ADD_USER);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,7 +69,7 @@ function SignupForm() {
         <Form.Label>Username</Form.Label>
         <Form.Control
           type="username"
-          placeholder="Username"
+          placeholder="Enter username"
           name="username"
           defaultValue={username}
           onChange={handleChange}
@@ -84,16 +84,13 @@ function SignupForm() {
           defaultValue={email}
           onChange={handleChange}
         />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="password">
         <Form.Label>Password</Form.Label>
         <Form.Control
           type="password"
-          placeholder="Password"
+          placeholder="Enter password"
           name="password"
           defaultValue={password}
           onChange={handleChange}

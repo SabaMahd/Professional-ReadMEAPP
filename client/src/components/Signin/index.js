@@ -6,13 +6,14 @@ import React, { useState } from 'react';
 import { validateEmail } from '../../utils/helpers';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
+import { Button, Form } from 'react-bootstrap';
 import Auth from '../../utils/auth';
 
 function SigninForm() {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
   const { email, password } = formState;
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login] = useMutation(LOGIN_USER);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,42 +59,73 @@ function SigninForm() {
   };
 
   return (
-    <section>
-      <form id="signin-form" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email address:</label>
-          <input
-            type="email"
-            name="email"
-            defaultValue={email}
-            // onBlur={handleChange}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            defaultValue={password}
-            // onBlur={handleChange}
-            onChange={handleChange}
-          />
-        </div>
-        {errorMessage && (
-          <div>
-            <p className="error-text">{errorMessage}</p>
-          </div>
-        )}
-        <button type="submit">Sign-in</button>
-      </form>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="email">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder="Enter email"
+          name="email"
+          defaultValue={email}
+          onChange={handleChange}
+        />
+      </Form.Group>
 
-      <nav>
-        <span>Don't have an account yet?</span>
+      <Form.Group className="mb-3" controlId="password">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          name="password"
+          defaultValue={password}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errorMessage && (
+        <div>
+          <p className="error-text">{errorMessage}</p>
+        </div>
+      )}
+      <Button variant="primary" type="submit">
+        Sign-In
+      </Button>
+    </Form>
+    // <section>
+    //   <form id="signin-form" onSubmit={handleSubmit}>
+    //     <div>
+    //       <label htmlFor="email">Email address:</label>
+    //       <input
+    //         type="email"
+    //         name="email"
+    //         defaultValue={email}
+    //         // onBlur={handleChange}
+    //         onChange={handleChange}
+    //       />
+    //     </div>
+    //     <div>
+    //       <label htmlFor="password">Password:</label>
+    //       <input
+    //         type="password"
+    //         name="password"
+    //         defaultValue={password}
+    //         // onBlur={handleChange}
+    //         onChange={handleChange}
+    //       />
+    //     </div>
+    //     {errorMessage && (
+    //       <div>
+    //         <p className="error-text">{errorMessage}</p>
+    //       </div>
+    //     )}
+    //     <button type="submit">Sign-in</button>
+    //   </form>
 
-        <a href="/signup">Create one here</a>
-      </nav>
-    </section>
+    //   <nav>
+    //     <span>Don't have an account yet?</span>
+
+    //     <a href="/signup">Create one here</a>
+    //   </nav>
+    // </section>
   );
 }
 
