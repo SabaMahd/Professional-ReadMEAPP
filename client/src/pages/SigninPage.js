@@ -1,10 +1,3 @@
-// Sign-in/Sign-up page
-// Will contain Sign-in and Sign-up components
-// Sign-in component will be main component that shows up when user opens page
-// Sign-up component will appear if user clicks on a link that reads "Don't have an account? Create one here"
-
-// Sign-in page will render initially based on the Navigation link
-// Sign-up page will render only based on a "Create Account" link, user cannot access sign-up page through Navigation normally 
 
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
@@ -13,7 +6,7 @@ import Auth from '../utils/auth';
 
 const Signin = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [Signin, { error }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -30,11 +23,11 @@ const Signin = (props) => {
     event.preventDefault();
   
     try {
-      const { data } = await Signin({
+      const { data } = await login({
         variables: { ...formState }
       });
     
-      Auth.Signin(data.login.token);
+      Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }

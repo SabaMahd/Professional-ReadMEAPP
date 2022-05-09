@@ -1,7 +1,4 @@
-// Sign-up page
-// Page will contain Sign-up form component 
 
-// Page can only be rendered based on a link being clicked from the Sign-in page
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';

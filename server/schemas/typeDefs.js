@@ -37,13 +37,16 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    readmes(username: String): [ReadMe]
+    allReadmes: [ReadMe]
+    userReadmes(username: String!): [ReadMe]
+    composeReadMe(readMeId: ID!): ReadMe
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addReadMe(input: ReadMeInput!): User
+    deleteReadMe(readMeId: ID!): User
   }
 `;
 

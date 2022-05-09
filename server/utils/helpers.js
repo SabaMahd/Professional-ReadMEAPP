@@ -6,22 +6,22 @@ function technologies(userData) {
         (technology) => `\n* ${technology}`
       )}`;
     }
-  }
+}
   
-  function installation(userData) {
+function installation(userData) {
     if (userData.installation) {
       return `\n\n## Installation \n${userData.installation}`;
     } else {
       return ``;
     }
-  }
+}
   
-  function usage(userData) {
+function usage(userData) {
     if (userData.usage) {
       return `\n\n## Usage \n${userData.usage}`;
     } else {
       return ``;
     }
-  }
+}
   
-  module.exports = { technologies, installation, usage };
+module.exports = { technologies, installation, usage };

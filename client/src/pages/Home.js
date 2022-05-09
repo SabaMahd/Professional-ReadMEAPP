@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { COMPOSE_README } from '../utils/queries';
 import ReadMeList from '../components/ReadMeList';
+import About from '../components/About';
 
 const Home = () => {
     // use useQuery hook to make query request
@@ -12,6 +13,9 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-space-between">
+        <div className="col-12 mb-3">
+            <About />
+        </div>
         <div className="col-12 mb-3">
           {loading ? (
             <div>Loading...</div>
