@@ -27,7 +27,6 @@ const userController = {
           res.status(400).json(err);
         });
     },
-
     // create users
     createUser({ body }, res) {
       User.create(body)
@@ -41,6 +40,7 @@ const userController = {
         .then(dbUserData => {
           if (!dbUserData) {
             res.status(404).json({ message: 'No pizza found with this id!' });
+
             return;
           }
           res.json(dbUserData);
