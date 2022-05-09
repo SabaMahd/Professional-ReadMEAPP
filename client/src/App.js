@@ -9,8 +9,9 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import About from '../src/components/About';
-import SigninForm from '../src/components/Signin';
+import SigninForm from './components/Signin';
 import Nav from './components/Nav';
+import ReadmeGenerator from '../src/components/GenerateReadmeForm'
 import Footer from './components/Footer';
 import './App.css';
 
@@ -45,7 +46,8 @@ function App() {
           <Nav />
           <div className="container">
             <Routes>
-              <Route exact path="/" element={<About/>} />
+              <Route exact path="/" element={<About />} />
+              <Route exact path="/ReadmeGenerator" element={<ReadmeGenerator />} />
             </Routes>
           </div>
         </div>

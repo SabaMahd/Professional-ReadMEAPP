@@ -1,33 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
-//import SigninForm from '../src/components/Signup';
-//import SigninForm from '../src/components/Signin';
+import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import SignUpForm from '../Signup/';
+import LoginForm from '../Signin';
 
-const Header = () => {
+import Auth from '/Users/oharr/OneDrive/Desktop/projects2/Professional-ReadMEAPP/client/src/utils/auth';
+
+const AppNavbar = () => {
+  // set modal display state
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <h1><a href="/">Professional-Readme</a></h1>
-      </div>
-      <nav>
-        <ul className="flex-row">
-          <li className="mx-1">
-            <a href="client\src\components\GenerateReadmeForm">
-              ReadmeGenerator
-            </a>
-          </li>
-          <li className="mx-1">
-            <a href="#signin">
-              Login/Sign Up
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <>
+      <Navbar bg='secondary' variant='dark' expand='lg'>
+        <Container fluid>
+          <Navbar.Brand as={Link} to='/'>
+            Professional-Readme
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls='navbar' />
+          <Navbar.Collapse id='navbar'>
+            <Nav className='ml-auto'>
+              <Nav.Link as={Link} to='/GenerateReadmeForm'>
+                ReadmeGenerator
+              </Nav.Link>
 
+              {Auth.loggedIn() ? (
+                <>
+                  <Nav.Link as={Link} to='/GenerateReadmeForm'>
+                    ReadmeGenerator
+                  </Nav.Link>
+                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                </>
+              ) : (
+                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      {/* set modal data up */}
+      <Modal
+        animation={false}
+        size='lg'
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        aria-labelledby='signup-modal'>
+        {/* tab container to do either signup or login component */}
+        <Tab.Container defaultActiveKey='login'>
+          <Modal.Header closeButton>
+            <Modal.Title id='signup-modal'>
+              <Nav variant='pills'>
+                <Nav.Item >
+                  <Nav.Link eventKey='login'>Login</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey='signup'>Sign Up</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Tab.Content>
+              <Tab.Pane eventKey='login'>
+                <LoginForm handleModalClose={() => setShowModal(false)} />
+              </Tab.Pane>
+              <Tab.Pane eventKey='signup'>
+                <SignUpForm handleModalClose={() => setShowModal(false)} />
+              </Tab.Pane>
+            </Tab.Content>
+          </Modal.Body>
+        </Tab.Container>
+      </Modal>
+    </>
   );
 };
 
-
-export default Header;
+export default AppNavbar;

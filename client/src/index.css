@@ -179,8 +179,9 @@ nav a:hover {
   position: absolute;
   left: -9999px;
 }
-[type='radio']:checked + label,
-[type='radio']:not(:checked) + label {
+
+[type='radio']:checked+label,
+[type='radio']:not(:checked)+label {
   position: relative;
   padding-left: 25px;
   cursor: pointer;
@@ -190,8 +191,8 @@ nav a:hover {
   margin-right: 0.2rem;
 }
 
-[type='radio']:checked + label:before,
-[type='radio']:not(:checked) + label:before {
+[type='radio']:checked+label:before,
+[type='radio']:not(:checked)+label:before {
   content: '';
   position: absolute;
   left: 0;
@@ -202,8 +203,9 @@ nav a:hover {
   border-radius: 100%;
   background: #fff;
 }
-[type='radio']:checked + label:after,
-[type='radio']:not(:checked) + label:after {
+
+[type='radio']:checked+label:after,
+[type='radio']:not(:checked)+label:after {
   content: '';
   width: 12px;
   height: 12px;
@@ -216,13 +218,13 @@ nav a:hover {
   transition: all 0.2s ease;
 }
 
-[type='radio']:not(:checked) + label:after {
+[type='radio']:not(:checked)+label:after {
   opacity: 0;
   -webkit-transform: scale(0);
   transform: scale(0);
 }
 
-[type='radio']:checked + label:after {
+[type='radio']:checked+label:after {
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -1253,12 +1255,13 @@ nav a:hover {
 
 
 main {
-	margin: 0 auto;
-	max-width: 90%;
+  margin: 0 auto;
+  max-width: 90%;
   padding: 50px 30px;
 }
+
 :root {
-  --primary: #8c54ff;
+  --primary: #ffffff;
   --secondary: #F3A847;
   --tertiary: #B12704;
   --light: #fafafa;
@@ -1407,15 +1410,15 @@ nav a:hover {
   text-decoration: none;
 }
 
-nav  li {
+nav li {
   cursor: pointer;
 }
 
 textarea {
-	width: 600px;
-	height: 120px;
-	border: 3px solid #cccccc;
-	padding: 5px;
+  width: 600px;
+  height: 120px;
+  border: 3px solid #cccccc;
+  padding: 5px;
 }
 
 .container {
@@ -1496,51 +1499,51 @@ textarea {
 }
 
 .modalBackdrop {
-	background: rgba(0, 0, 0, .65);
-	bottom: 0;
-	left: 0;
-	overflow: auto;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 1;
+  background: rgba(0, 0, 0, .65);
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .modalContainer {
-	background: var(--darker);
-	border-radius: 5px;
-	max-width: 100%;
-	margin: 50px auto;
-	padding: 15px;
-	width: 960px;
+  background: var(--darker);
+  border-radius: 5px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 15px;
+  width: 960px;
 }
 
 .modalTitle {
-	font-size: 18px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
 button {
-	background: var(--primary);
-	border: 0;
-	border-radius: 5px;
-	color: #fff;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 30px;
-	padding: 10px 15px;	
+  background: var(--primary);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  padding: 10px 15px;
 }
 
 a {
-	border-radius: 5px;
-	color: var(--primary);
-	font-weight: 600;
-	padding: 2px 4px;
-	margin-left: -2px;
-	margin-right: -2px;
-	
+  border-radius: 5px;
+  color: var(--primary);
+  font-weight: 600;
+  padding: 2px 4px;
+  margin-left: -2px;
+  margin-right: -2px;
+
 }
 
 .navActive {
