@@ -14,7 +14,6 @@ import SignUpPage from './components/pages/Signup';
 import ReadmeGenerator from './components/pages/ReadmeGenerator';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-// import './App.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
