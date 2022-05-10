@@ -5,7 +5,7 @@ import { ADD_README } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 
-  let tech = [];
+let tech = [];
 
 function ReadMeForm() {
   const [addReadMe] = useMutation(ADD_README);
@@ -29,27 +29,21 @@ function ReadMeForm() {
     usage: '',
   });
 
-  // let tech = [];
-
   const checkBoxValue = (event) => {
     const { name, value } = event.target;
     if (document.getElementById(`${name}`).checked === true) {
       tech.push(value);
-      console.log(tech)
-      return tech
+      return tech;
     } else if (document.getElementById(`${name}`).checked === false) {
       let index = tech.findIndex((element) => element === name);
       tech.splice(index, 1);
-      console.log(tech)
-      return tech
+      return tech;
     }
   };
 
   const handleChange = (event) => {
-    console.log(tech)
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
-    console.log(formState);
   };
 
   // submit form
@@ -58,7 +52,7 @@ function ReadMeForm() {
 
     // use try/catch instead of promises to handle errors
     try {
-      const formData = { ...formState, technologies: tech }
+      const formData = { ...formState, technologies: tech };
 
       if (Auth.loggedIn()) {
         const { data } = await addReadMe({
@@ -76,9 +70,8 @@ function ReadMeForm() {
       installation: '',
       usage: '',
     });
+    event.target.reset()
   };
-
-  console.log(formState);
 
   return (
     <Form onSubmit={handleFormSubmit}>
@@ -101,11 +94,9 @@ function ReadMeForm() {
             key={technology}
             inline
             label={technology}
-            // name='technologies'
             name={technology}
             type="checkbox"
             value={technology}
-            // id={`inline-checkbox-${technology}`}
             id={technology}
             onChange={checkBoxValue}
           />
