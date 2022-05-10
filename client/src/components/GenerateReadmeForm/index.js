@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 import { ADD_README } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
@@ -70,60 +71,62 @@ function ReadMeForm() {
       installation: '',
       usage: '',
     });
-    event.target.reset()
+    event.target.reset();
   };
 
   return (
-    <Form onSubmit={handleFormSubmit}>
-      <Form.Group className="mb-3" controlId="readMeForm.ControlInput1">
-        <Form.Label>Title</Form.Label>
-        <Form.Control type="text" name="title" onChange={handleChange} />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea1">
-        <Form.Label>Decsciption</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={3}
-          name="description"
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <div key="inline-checkbox" className="mb-3">
-        {technologies.map((technology) => (
-          <Form.Check
-            key={technology}
-            inline
-            label={technology}
-            name={technology}
-            type="checkbox"
-            value={technology}
-            id={technology}
-            onChange={checkBoxValue}
+    <Row>
+      <Form onSubmit={handleFormSubmit}>
+        <Form.Group className="mb-3" controlId="readMeForm.ControlInput1">
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" name="title" onChange={handleChange} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea1">
+          <Form.Label>Decsciption</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="description"
+            onChange={handleChange}
           />
-        ))}
-      </div>
-      <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea2">
-        <Form.Label>Installation</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={3}
-          name="installation"
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea3">
-        <Form.Label>Usage</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={3}
-          name="usage"
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <Button variant="outline-warning" type="submit">
-        Submit
-      </Button>{' '}
-    </Form>
+        </Form.Group>
+        <div key="inline-checkbox" className="mb-3">
+          {technologies.map((technology) => (
+            <Form.Check
+              key={technology}
+              inline
+              label={technology}
+              name={technology}
+              type="checkbox"
+              value={technology}
+              id={technology}
+              onChange={checkBoxValue}
+            />
+          ))}
+        </div>
+        <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea2">
+          <Form.Label>Installation</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="installation"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="readMeForm.ControlTextarea3">
+          <Form.Label>Usage</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="usage"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Button variant="outline-warning" type="submit">
+          Submit
+        </Button>{' '}
+      </Form>
+    </Row>
   );
 }
 
