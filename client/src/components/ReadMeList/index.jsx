@@ -9,7 +9,6 @@ import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Alert from 'react-bootstrap/Alert';
 
 function ReadMeList() {
   const { loading, data } = useQuery(GET_ME);
@@ -27,7 +26,6 @@ function ReadMeList() {
         });
       }
     } catch (error) {}
-    console.log('working');
   };
 
   if (loading) {
@@ -36,6 +34,7 @@ function ReadMeList() {
   return (
     <Row>
       <h1>{me.username}'s files</h1>
+
       {me.files.map((element) => (
         <Col sm={6} key={element.title}>
           <ButtonGroup>
@@ -43,7 +42,7 @@ function ReadMeList() {
               <Dropdown.Item eventKey="1">Genereate README</Dropdown.Item>
               <Dropdown.Item
                 eventKey="2"
-                onClick={handleDeleteReadme}
+                onClick={() => handleDeleteReadme(element._id)}
                 id={`${element._id}`}
               >
                 Delete README
