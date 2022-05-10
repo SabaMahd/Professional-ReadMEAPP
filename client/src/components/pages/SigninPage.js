@@ -7,14 +7,12 @@
 // Sign-up page will render only based on a "Create Account" link, user cannot access sign-up page through Navigation normally 
 
 import React from "react";
-// import '../../App.cs';
 import SigninForm from "../Signin";
-
 
 function SigninPage() {
     return (
         <div>
-            <h1>Sign In</h1>
+            <h1>Login</h1>
             <SigninForm />
         </div>
     );

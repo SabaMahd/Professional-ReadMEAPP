@@ -9,7 +9,7 @@ import SignupForm from '../Signup'
 function SignUpPage() {
   return (
     <div>
-    <h1>Sign-Up</h1>
+    <h1>Sign Up</h1>
     <SignupForm />
 </div>
   )
