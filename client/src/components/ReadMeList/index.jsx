@@ -12,13 +12,23 @@ import Row from 'react-bootstrap/Row';
 import Alert from 'react-bootstrap/Alert';
 
 function ReadMeList() {
-  const arr = [1, 2, 3, 4, 5];
   const { loading, data } = useQuery(GET_ME);
   // const { loadingReadMeData, readmeData } = useQuery(COMPOSE_README);
   const [deleteReadMe] = useMutation(DELETE_READ_ME);
 
   const me = data?.me || {};
   console.log(me.files);
+
+  const handleDeleteReadme = async (readMeId) => {
+    try {
+      if (Auth.loggedIn()) {
+        const { data } = await deleteReadMe({
+          variables: { readMeId },
+        });
+      }
+    } catch (error) {}
+    console.log('working');
+  };
 
   if (loading) {
     return <h2>Loading README Files...</h2>;
@@ -29,14 +39,15 @@ function ReadMeList() {
       {me.files.map((element) => (
         <Col sm={6} key={element.title}>
           <ButtonGroup>
-            <DropdownButton
-              as={ButtonGroup}
-              title={element.title}
-              // id="bg-nested-dropdown"
-              id={`${element._id}`}
-            >
+            <DropdownButton as={ButtonGroup} title={element.title}>
               <Dropdown.Item eventKey="1">Genereate README</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Delete README</Dropdown.Item>
+              <Dropdown.Item
+                eventKey="2"
+                onClick={handleDeleteReadme}
+                id={`${element._id}`}
+              >
+                Delete README
+              </Dropdown.Item>
               <Dropdown.Item eventKey="3">Download</Dropdown.Item>
             </DropdownButton>
           </ButtonGroup>
