@@ -1377,6 +1377,17 @@ img {
   max-width: 100%;
 }
 
+.aboutDevelopers {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Orlando, .Chotan, .Zachary, .Harry, .Saba, .Josh {
+  display: flex;
+  width: 200px;
+  padding: 5px; 
+}
+
 span[role="img"] {
   cursor: default;
 }
@@ -1548,6 +1559,6 @@ a {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
 }

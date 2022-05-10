@@ -16,17 +16,13 @@ function About() {
                 Login to access the README generator. If you do not have an account already, sign up by clicking the "Sign up" link at the top of the page.
             </p>
 
-            
-            
-            
             <div>
-                <h1>Meet The Developers</h1>
-                
-                <div className="aboutDevelopers">
+                <div class="aboutDevelopers">
+                    <h1>Meet The Developers</h1>
                     <div>
                         <img src={Orlando} class="Orlando" alt="Orlando McEwan" />
-                         <h3>Orlando McEwan</h3>
-                         <p>Full-Stack Web Developer</p>
+                        <h3>Orlando McEwan</h3>
+                        <p>Full-Stack Web Developer</p>
                     </div>
                     
                     <div>
