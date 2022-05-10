@@ -38,6 +38,7 @@ const Header = () => {
           )}
         </ul>
       </nav>
+      {/* <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} /> */}
     </header>
   );
 };
