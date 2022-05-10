@@ -1,7 +1,7 @@
 import React from 'react';
 //import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
-import NavTabs from '../NavTabs';
+// import NavTabs from '../NavTabs';
 //import SigninForm from '../src/components/Signup';
 //import SigninForm from '../src/components/Signin';
 
@@ -38,7 +38,7 @@ function Header({
           </li>
         </ul>
       </nav>
-      <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
+      {/* <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} /> */}
     </header>
   );
 };

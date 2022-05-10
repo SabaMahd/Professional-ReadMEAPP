@@ -1,23 +1,67 @@
 import React from "react";
+import Orlando from '../../img/Orlando McEwan.jpg';
+import Chotan from '../../img/Chotan Sharma Photo.jpg';
+import Zachary from '../../img/Zachary Levin Photo.jpg';
+import Harry from '../../img/Harry Ogletree Photo.jpg';
+import Saba from '../../img/Saba Mahd Photo.jpg';
+import Josh from '../../img/Josh Biske Photo.jpg';
 
 function About() {
 
     return (
         <div>
-            <h1>About Us</h1>
+            <h1>About Professional-Readme</h1>
             <p>
-                Nunc pharetra finibus est at efficitur. Praesent sed congue diam.
-                Integer gravida dui mauris, ut interdum nunc egestas sed. Aenean sed
-                mollis diam. Nunc aliquet risus ac finibus porta. Nam quis arcu non
-                lectus tincidunt fermentum. Suspendisse aliquet orci porta quam semper
-                imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus
-                in. Sed rhoncus mollis diam, sit amet facilisis lectus blandit at.
+                Professional-Readme allows you to fill out a form that generates a professional README file for your project!
+                Login to access the README generator. If you do not have an account already, sign up by clicking the "Sign up" link at the top of the page.
             </p>
 
-            <h1>What We Do</h1>
-            <p>
-                Insert Text here
-            </p>
+            
+            
+            
+            <div>
+                <h1>Meet The Developers</h1>
+                
+                <div className="aboutDevelopers">
+                    <div>
+                        <img src={Orlando} class="Orlando" alt="Orlando McEwan" />
+                         <h3>Orlando McEwan</h3>
+                         <p>Full-Stack Web Developer</p>
+                    </div>
+                    
+                    <div>
+                        <img src={Chotan} class="Chotan" alt="Chotan Sharma" />
+                        <h3>Chotan Sharma</h3>
+                        <p>Full-Stack Web Developer</p>
+                    </div>
+
+                    <div>
+                        <img src={Zachary} class="Zachary" alt="Zachary Levin" />
+                        <h3>Zachary Levin</h3>
+                        <p>Full-Stack Web Developer</p>
+                    </div>
+                    
+                    <div>
+                        <img src={Harry} class="Harry" alt="Harry Ogletree" />
+                        <h3>Harry Ogletree</h3>
+                        <p>Full-Stack Web Developer</p>
+                    </div>
+                    
+                    <div>
+                        <img src={Saba} class="Saba" alt="Saba Mahd" />
+                        <h3>Saba Mahd</h3>
+                        <p>Full-Stack Web Developer</p>
+                    </div>
+
+                    <div>
+                        <img src={Josh} class="Josh" alt="Josh Biske" />
+                        <h3>Josh Biske</h3>
+                        <p>Full-Stack Web Developer</p>
+                    </div>
+
+                </div>
+            </div>
+            
 
         </div>
     );
