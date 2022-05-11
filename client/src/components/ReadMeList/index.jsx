@@ -10,7 +10,6 @@ import Auth from '../../utils/auth';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-
 function ReadMeList() {
   const { loading, data } = useQuery(GET_ME);
   const [deleteReadMe] = useMutation(DELETE_READ_ME);
@@ -29,7 +28,7 @@ function ReadMeList() {
   };
 
   const handleComposeReadMe = async (readMeId) => {
-    console.log(readMeId)
+    console.log(readMeId);
     try {
       if (Auth.loggedIn()) {
         const { data } = await composeReadMe({
@@ -55,14 +54,18 @@ function ReadMeList() {
               onClick={() => handleComposeReadMe(element._id)}
             >
               <Dropdown.Item
+                eventKey="3"
+                href={require('../../dist/README.md')}
+                download
+              >
+                Download README
+              </Dropdown.Item>
+              <Dropdown.Item
                 eventKey="2"
                 onClick={() => handleDeleteReadMe(element._id)}
                 id={`${element._id}`}
               >
                 Delete README
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="3" href={require('../../dist/README.md')} download>
-                Download README
               </Dropdown.Item>
             </DropdownButton>
           </ButtonGroup>
