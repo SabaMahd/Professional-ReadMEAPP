@@ -1,27 +1,27 @@
 // Generate README Form page
 // Will contain GenerateReadmeForm component
 
-import React from "react";
-import '../../App.css';
+import React from 'react';
+import ReadMeForm from '../../components/GenerateReadmeForm';
+import Auth from '../../utils/auth';
+import ReadMeList from '../ReadMeList';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function ReadmeGenerator() {
-    return (
-        <div>
-            <h1>Generate a README!</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
-                velit, lobortis ut magna varius, blandit rhoncus sem. Morbi lacinia nisi
-                ac dui fermentum, sed luctus urna tincidunt. Etiam ut feugiat ex. Cras
-                non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna imperdiet
-                ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras
-                rutrum ligula in tincidunt commodo. Morbi sit amet mollis orci, in
-                tristique ex. Donec nec ornare elit. Donec blandit est sed risus feugiat
-                porttitor. Vestibulum molestie hendrerit massa non consequat. Vestibulum
-                vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
-                fames ac ante ipsum primis in faucibus.
-            </p>
-        </div>
-    );
+  const loggedIn = Auth.loggedIn();
+  return loggedIn ? (
+    <Row>
+      <Col>
+        <ReadMeForm />
+      </Col>
+      <Col>
+        <ReadMeList />
+      </Col>
+    </Row>
+  ) : (
+    window.location.replace('/login')
+  );
 }
 
 export default ReadmeGenerator;

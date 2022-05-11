@@ -3,6 +3,7 @@ const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const fs = require('fs');
 const { technologies, installation, usage } = require('../utils/helpers');
+const path = require('path');
 
 // define resolvers
 const resolvers = {
@@ -12,7 +13,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('files');
+          .populate({ path: 'files', options: { sort: { createdAt: -1 } } });
 
         return userData;
       }
@@ -43,25 +44,34 @@ const resolvers = {
       return ReadMe.find(params).sort({ createdAt: -1 });
     },
 
-    composeReadMe: async (parent, { readMeId }, context) => {
-      if (context.user) {
-        const readMeData = await ReadMe.findById({ _id: readMeId });
+    //   composeReadMe: async (parent, { readMeId }, context) => {
+    //     if (context.user) {
+    //       const readMeData = await ReadMe.findById({ _id: readMeId });
 
-        if (readMeData) {
-          let content = `# ${readMeData.title} \n\n## Description \n${readMeData.description}${technologies(readMeData)}${installation(readMeData)}${usage(readMeData)}`;
-          fs.writeFile(`dist/README.md`, content, (err) => {
-            if (err) {
-              throw err;
-            } else {
-              console.log('The "data to append" was appended to file!');
-            }
-          })
-          return readMeData
-        } else {
-          console.log("No ReadMe found!")
-        }
-      }
-    },
+    //       const readMePath = path.join(
+    //         __dirname,
+    //         '../../client/src/dist/README.md'
+    //       );
+
+    //       if (readMeData) {
+    //         let content = `# ${readMeData.title} \n\n## Description \n${
+    //           readMeData.description
+    //         }${technologies(readMeData)}${installation(readMeData)}${usage(
+    //           readMeData
+    //         )}`;
+    //         fs.writeFile(readMePath, content, (err) => {
+    //           if (err) {
+    //             throw err;
+    //           } else {
+    //             console.log('The "data to append" was appended to file!');
+    //           }
+    //         });
+    //         return readMeData;
+    //       } else {
+    //         console.log('No ReadMe found!');
+    //       }
+    //     }
+    //   },
   },
 
   Mutation: {
@@ -101,13 +111,42 @@ const resolvers = {
           { $addToSet: { files: readMe._id } },
           { new: true, runValidators: true }
         )
-          .populate('files')
+          .populate({ path: 'files', options: { sort: { createdAt: -1 } } })
           .select('-__v -password');
 
         return updateUser;
       }
 
       throw new AuthenticationError('You need to be logged in!');
+    },
+
+    composeReadMe: async (parent, { readMeId }, context) => {
+      if (context.user) {
+        const readMeData = await ReadMe.findById({ _id: readMeId });
+
+        const readMePath = path.join(
+          __dirname,
+          '../../client/src/dist/README.md'
+        );
+
+        if (readMeData) {
+          let content = `# ${readMeData.title} \n\n## Description \n${
+            readMeData.description
+          }${technologies(readMeData)}${installation(readMeData)}${usage(
+            readMeData
+          )}`;
+          fs.writeFile(readMePath, content, (err) => {
+            if (err) {
+              throw err;
+            } else {
+              console.log('The "data to append" was appended to file!');
+            }
+          });
+          return readMeData;
+        } else {
+          console.log('No ReadMe found!');
+        }
+      }
     },
 
     deleteReadMe: async (parent, { readMeId }, context) => {

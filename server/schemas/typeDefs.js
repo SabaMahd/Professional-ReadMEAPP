@@ -17,7 +17,7 @@ const typeDefs = gql`
     description: String
     technologies: [String]
     installation: String
-    Usage: String
+    usage: String
     createdAt: String
   }
 
@@ -48,6 +48,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addReadMe(input: ReadMeInput!): User
     deleteReadMe(readMeId: ID!): User
+    composeReadMe(readMeId: ID!): ReadMe
   }
 `;
 

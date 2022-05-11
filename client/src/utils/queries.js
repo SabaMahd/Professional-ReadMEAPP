@@ -1,18 +1,19 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_USERS = gql`
-  query users($username: String) {
-    users(username: $username) {
+export const GET_ME = gql`
+  {
+    me {
       _id
-      username
       email
+      username
+      fileCount
       files {
         _id
         title
         description
         technologies
         installation
-        Usage
+        usage
         createdAt
       }
     }
