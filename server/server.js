@@ -20,7 +20,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // create new instance of Apollo server with graphql schema
