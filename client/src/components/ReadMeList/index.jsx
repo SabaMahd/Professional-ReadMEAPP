@@ -29,6 +29,7 @@ function ReadMeList() {
   };
 
   const handleComposeReadMe = async (readMeId) => {
+    console.log(readMeId)
     try {
       if (Auth.loggedIn()) {
         const { data } = await composeReadMe({
