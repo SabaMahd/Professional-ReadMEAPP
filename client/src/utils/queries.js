@@ -19,17 +19,3 @@ export const GET_ME = gql`
     }
   }
 `;
-
-export const COMPOSE_README = gql`
-query composeReadMe($readMeId: ID!) {
-  composeReadMe(readMeId: $readMeId) {
-    _id
-    title
-    description
-    technologies
-    installation
-    usage
-    createAt
-  }
-}
-`;

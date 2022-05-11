@@ -3,25 +3,35 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import { GET_ME, COMPOSE_README } from '../../utils/queries';
-import { DELETE_READ_ME } from '../../utils/mutations';
+import { GET_ME } from '../../utils/queries';
+import { DELETE_READ_ME, COMPOSE_README } from '../../utils/mutations';
 import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import README from '../../dist/README.md';
 
 function ReadMeList() {
   const { loading, data } = useQuery(GET_ME);
-  // const { loadingReadMeData, readmeData } = useQuery(COMPOSE_README);
   const [deleteReadMe] = useMutation(DELETE_READ_ME);
+  const [composeReadMe] = useMutation(COMPOSE_README);
 
   const me = data?.me || {};
-  console.log(me.files);
 
-  const handleDeleteReadme = async (readMeId) => {
+  const handleDeleteReadMe = async (readMeId) => {
     try {
       if (Auth.loggedIn()) {
         const { data } = await deleteReadMe({
+          variables: { readMeId },
+        });
+      }
+    } catch (error) {}
+  };
+
+  const handleComposeReadMe = async (readMeId) => {
+    try {
+      if (Auth.loggedIn()) {
+        const { data } = await composeReadMe({
           variables: { readMeId },
         });
       }
@@ -38,16 +48,21 @@ function ReadMeList() {
       {me.files.map((element) => (
         <Col sm={6} key={element.title}>
           <ButtonGroup>
-            <DropdownButton as={ButtonGroup} title={element.title}>
-              <Dropdown.Item eventKey="1">Genereate README</Dropdown.Item>
+            <DropdownButton
+              as={ButtonGroup}
+              title={element.title}
+              onClick={() => handleComposeReadMe(element._id)}
+            >
               <Dropdown.Item
                 eventKey="2"
-                onClick={() => handleDeleteReadme(element._id)}
+                onClick={() => handleDeleteReadMe(element._id)}
                 id={`${element._id}`}
               >
                 Delete README
               </Dropdown.Item>
-              <Dropdown.Item eventKey="3">Download</Dropdown.Item>
+              <Dropdown.Item eventKey="3" href={README} download>
+                Download README
+              </Dropdown.Item>
             </DropdownButton>
           </ButtonGroup>
         </Col>
