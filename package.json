@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "dayjs": "^1.11.2",
+    "env-cmd": "^10.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.2"
+    "mongoose": "^6.3.2",
+    "react": "^18.1.0"
   }
 }

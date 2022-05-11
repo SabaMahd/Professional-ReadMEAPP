@@ -1551,3 +1551,19 @@ footer {
   position: absolute;
   bottom: 0;
 }
+
+@media (max-width:1500px){
+  .mx-1{
+    font-size: .85rem;
+
+  }
+
+}
+
+@media (max-width:1200px){
+  .mx-1{
+    font-size: .75rem;
+
+  }
+  
+}
