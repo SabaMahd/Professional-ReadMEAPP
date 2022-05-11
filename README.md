@@ -1,16 +1,50 @@
-# Professional-ReadMEAPP
+# Professional README
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-This is an app that allows developers to skip the hassle and extensive time manually creating a README profile. This App will provide an easy way for the user to create a Github ReadMe File within minutes with all the cool features and add-ons. Users will also be able to house all their ReadMe files created for their projects in one place in case they need to revisit them.
+## Table of Contents
+ * [Description](#Description)
+ * [Installation](#Installation)
+ * [Usage](#Usage)
+ * [Contribution](#Contribution)
+ * [License](#License)
+ * [Questions](#Questions)
 
-# Table of Contents
+## Description
+Professional README is a readme generator aimed at helping developers quickly and efficiently create a README file. This application is easy to use and users can keep a record of past README files that they have created.
 
+## Built With
+ * Apollo
+ * Bcrypt
+ * Bootstrap
+ * CSS
+ * Express
+ * GraphQL
+ * HTML
+ * JavaScript
+ * JSONwebtokens
+ * MongoDB
+ * Mongoose
+ * Node
+ * React
+ * React-Router-DOM
 
-# Installation
+## ScreenShot
+![This is a screenshot](../professional-readme-app/client/public/Screen%20Shot%202022-05-11%20at%204.48.57%20PM.png)
 
-# Usage
+## Installation
+To install this application locally, go to the application repository https://github.com/SabaMahd/Professional-ReadMEAPP and download the code base. To run the application you must have node installed. From the root of application run npm install to download all the dependencies required the application. Once completed npm run develop will run both the client and server locally for the application. 
 
-# Technology Used
+## License
+This application is covered under the MIT.
+For more details about licensing, use this link: https://choosealicense.com/licenses/mit/.
 
-# Credits
+## Questions
+For additional information about the project, please contact one of the contributors below.
 
-test
+## Contributors
+* Chotan Sharma: https://github.com/ChotanSharma
+* Harry Ogletree: https://github.com/HLOIII
+* Josh Biske: https://github.com/Jbiske
+* Orlando McEwan: https://github.com/omcewan
+* Saba Mahd: https://github.com/SabaMahd
+* Zachary Levin: https://github.com/zachary-levin
