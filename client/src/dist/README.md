@@ -1,16 +1,14 @@
-# This is a test for lizzy 
+# README Project V7 
 
 ## Description 
-this is a test for lizzy
+This is a test readme file for our app
 
 ## Built With 
-* JavaScript,
-* MongoDB,
-* HTML,
-* NodeJS
+* node,
+* react
 
 ## Installation 
-download this this
+to use this application simple clone the repo to your system
 
 ## Usage 
-use this application like this
+generate a readme file that you can use for your application
