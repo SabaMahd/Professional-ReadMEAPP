@@ -54,17 +54,17 @@ function ReadMeList() {
             >
               <Dropdown.Item
                 eventKey="1"
-                onClick={() => handleDeleteReadMe(element._id)}
-                id={`${element._id}`}
-              >
-                Delete README
-              </Dropdown.Item>
-              <Dropdown.Item
-                eventKey="2"
                 href={require('../../dist/README.md')}
                 download
               >
                 Download README
+              </Dropdown.Item>
+              <Dropdown.Item
+                eventKey="2"
+                onClick={() => handleDeleteReadMe(element._id)}
+                id={`${element._id}`}
+              >
+                Delete README
               </Dropdown.Item>
             </DropdownButton>
           </ButtonGroup>
