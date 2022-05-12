@@ -11,4 +11,4 @@ This is a test readme file for our app
 to use this application simple clone the repo to your system
 
 ## Usage 
-generate a readme file that you can use for your application
+generate a readme file that you can use for your applicatio
