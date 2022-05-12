@@ -9,7 +9,6 @@ import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import README from '../../dist/README.md';
 
 function ReadMeList() {
   const { loading, data } = useQuery(GET_ME);
@@ -60,7 +59,11 @@ function ReadMeList() {
               >
                 Delete README
               </Dropdown.Item>
-              <Dropdown.Item eventKey="2" href={README} download>
+              <Dropdown.Item
+                eventKey="2"
+                href={require('../../dist/README.md')}
+                download
+              >
                 Download README
               </Dropdown.Item>
             </DropdownButton>
